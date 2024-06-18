@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name List</title>
+    <script>
+        // Array to store names
+        const names = [];
+
+        // Function to add a name to the list
+        function addName() {
+            const nameInput = document.querySelector('#name'); // Get input field
+            const name = nameInput.value.trim(); // Get and trim the input value
+            if (name) {
+                names.push(name); // Add the name to the array
+                names.sort(); // Sort the names array in ascending order
+                displayNames(); // Display the sorted names
+            }
+            nameInput.value = ''; // Clear the input field
+        }
+
+        // Function to display all names in the list
+        function displayNames() {
+            const resultDiv = document.querySelector('#result'); // Get result div
+            resultDiv.innerHTML = ''; // Clear previous results
+
+            // Iterate through names array and display each name
+            names.forEach(name => {
+                const nameElement = document.createElement('div');
+                nameElement.textContent = name; // Display name
+                resultDiv.appendChild(nameElement);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Name List</h1>
+    <input type="text" id="name" placeholder="Enter a name"> <!-- Input field for name -->
+    <button onclick="addName()">Add</button> <!-- Button to add name to the list -->
+    <div id="result"></div> <!-- Div to display the list of names -->
+</body>
+</html>
